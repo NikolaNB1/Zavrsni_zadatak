@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
         <div class="row">
             <form action="create_post.php" method="POST" id="postsForma">
                 <h1>Create new post</h1>
-                <ul>
+                <ul style="list-style-type: none;">
                     <li class="form-group">
                         <label for="title" class='control-label'>Title</label>
                         <input type="text" id="title" name="title" placeholder="Enter title" class='form-control'>
