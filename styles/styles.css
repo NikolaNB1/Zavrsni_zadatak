@@ -20,6 +20,13 @@ h6,
 .h6 {
   color: #b34848;
 }
+.header {
+  color: #b34848;
+}
+.header:hover {
+  color: #b34848;
+  text-decoration: underline;
+}
 .blog-masthead {
   background-color: #b34848;
 }
