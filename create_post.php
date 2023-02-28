@@ -3,19 +3,24 @@
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $body = $_POST['body'];
-    $author = $_POST['author'];
-    if (empty($title) || empty($author) || empty($body)) {
+    $author_id = $_POST['author_id'];
+    if (empty($title) || empty($author_id) || empty($body)) {
         echo "Neki podaci nedostaju";
     } else {
         $date_time = date('Y-m-d H:m:s');
-        $sql = "INSERT INTO posts(title, body, author, created_at)
-        VALUES('$title', '$body', '$author', '$date_time')";
+        $sql = "INSERT INTO posts(title, body, created_at, author_id)
+        VALUES('$title', '$body', '$date_time', '$author_id')";
         $statement = $connection->prepare($sql);
         $statement->execute();
 
         header('Location: posts.php');
     }
 }
+$sql2 = "SELECT * FROM author";
+$statement = $connection->prepare($sql2);
+$statement->execute();
+$statement->setFetchMode(PDO::FETCH_ASSOC);
+$authors = $statement->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,10 +52,12 @@ if (isset($_POST['submit'])) {
                         <label for="title" class='control-label'>Title</label>
                         <input type="text" id="title" name="title" placeholder="Enter title" class='form-control'>
                     </li>
-                    <li class="form-group">
-                        <label for="author" class='control-label'>Author</label>
-                        <input type="text" id="author" name="author" placeholder="Enter author" class='form-control'>
-                    </li>
+                    Author:
+                    <select name="author_id">
+                        <?php foreach ($authors as $author) { ?>
+                            <option value="<?php echo $author['id']; ?>"><?php echo $author['ime'] . ' ' . $author['prezime']; ?></option>
+                        <?php } ?>
+                    </select> <br><br>
                     <li class="form-group">
                         <label for="body" class='control-label'>Body</label>
                         <textarea rows="10" id="body" name="body" placeholder="Enter body" class='form-control'></textarea>

@@ -4,7 +4,7 @@
             <nav class="nav">
                 <a class="nav-link" href="posts.php">Posts</a>
                 <a class="nav-link" href="create_post.php">Create post</a>
-                <!-- <a class="nav-link" href="comments.php">Comments</a> -->
+                <a class="nav-link" href="create_author.php">Create author</a>
             </nav>
         </div>
     </div>
