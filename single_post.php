@@ -40,10 +40,17 @@ $comments = $statement->fetchAll();
         <div class="row">
 
             <div class="col-sm-8 blog-main">
+                <?php
+                if ($post['pol'] === 'M') {
+                    $boja = 'blue';
+                } else {
+                    $boja = 'rgb(255, 131, 152)';
+                };
+                ?>
                 <div class="blog-post">
                     <h2 class="blog-post-title"><a class="header" href="single_post.php?id=<?php echo $post['id'] ?>"><?php echo ($post['title']) ?></a></h2>
                     <p class="blog-post-meta"><?php echo ($post['created_at']) ?>. by
-                        <span class="<?php echo ($post['pol'] == 'M') ? 'text-primary' : 'text-danger'; ?>">
+                        <span style="color: <?php echo $boja; ?>">
                             <?php echo $post['ime'] . ' ' . $post['prezime']; ?>
                         </span>
                     </p>
