@@ -8,7 +8,7 @@ $statement->execute();
 $statement->setFetchMode(PDO::FETCH_ASSOC);
 $post = $statement->fetch();
 
-$sql2 = "SELECT comments.*, author.ime, author.prezime FROM comments JOIN author ON comments.author_id = author.id WHERE post_id = $id";
+$sql2 = "SELECT comments.*, author.ime, author.prezime, author.pol FROM comments JOIN author ON comments.author_id = author.id WHERE post_id = $id";
 $statement = $connection->prepare($sql2);
 $statement->execute();
 $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -49,16 +49,7 @@ $comments = $statement->fetchAll();
                     </p>
                     <p><?php echo ($post['body']) ?></p>
                 </div>
-                <ul style="list-style-type: none;">
-                    <?php foreach ($comments as $comment) { ?>
-                        <li>
-                            <hr>
-                            <p class="blog-post-meta">Comment by: <?php echo $comment['ime'] . ' ' . $comment['prezime']; ?></a></p>
-                            <p><?php echo $comment['text'] ?></p>
-                            <hr>
-                        </li>
-                    <?php } ?>
-                </ul>
+                <?php include("comments.php"); ?>
             </div>
             <?php include("sidebar.php"); ?>
         </div>

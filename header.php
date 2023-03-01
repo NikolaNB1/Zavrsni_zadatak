@@ -2,7 +2,7 @@
     <div class="blog-masthead">
         <div class="container">
             <nav class="nav">
-                <a class="nav-link" href="posts.php">Posts</a>
+                <a class="nav-link" href="index.php">Home</a>
                 <a class="nav-link" href="create_post.php">Create post</a>
                 <a class="nav-link" href="create_author.php">Create author</a>
             </nav>

@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
         $statement = $connection->prepare($sql);
         $statement->execute();
 
-        header('Location: posts.php');
+        header('Location: index.php');
     }
 }
 ?>
